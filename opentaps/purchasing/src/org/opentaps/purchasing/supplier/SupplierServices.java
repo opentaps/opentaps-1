@@ -104,7 +104,16 @@ public class SupplierServices {
         String forceComplete = context.get("forceComplete") == null ? "N" : (String) context.get("forceComplete");
         Map result = ServiceUtil.returnSuccess();
         try {
-         // verify account name is use already
+
+            // sanitize the party Id if it was given
+            if (UtilValidate.isNotEmpty(supplierPartyId)) {
+                supplierPartyId = supplierPartyId.replaceAll(" ", "");
+                supplierPartyId = supplierPartyId.replaceAll("[^a-zA-Z0-9_]", "_");
+                supplierPartyId = supplierPartyId.replaceAll("__+", "_");
+                context.put("partyId", supplierPartyId);
+            }
+
+            // verify account name is use already
             if (!"Y".equals(forceComplete)) {
                 DomainsLoader domainLoader = new DomainsLoader(new Infrastructure(dispatcher), new User(userLogin));
                 PartyDomainInterface partyDomain = domainLoader.loadDomainsDirectory().getPartyDomain();
