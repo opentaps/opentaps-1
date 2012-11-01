@@ -451,6 +451,7 @@ public class PackingSession extends org.ofbiz.shipment.packing.PackingSession im
                 }
             }
             // second pass considering reservations with quantity not available
+            i = reservations.iterator();
             while (i.hasNext() && qtyRemain.signum() > 0) {
                 GenericValue res = i.next();
                 BigDecimal resQty = res.getBigDecimal("quantity");
@@ -459,7 +460,7 @@ public class PackingSession extends org.ofbiz.shipment.packing.PackingSession im
                     resQtyNa = BigDecimal.ZERO;
                 }
 
-                if (resQtyNa.signum() != 0) {
+                if (resQtyNa.signum() == 0) {
                     Debug.logInfo("Skipping reservations without quantityNotAvailable on the second pass.", MODULE);
                     continue;
                 }
