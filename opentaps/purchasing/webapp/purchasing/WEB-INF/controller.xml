@@ -620,6 +620,14 @@
         </response>
         <response name="error" type="view" value="editorderitems"/>
     </request-map>
+    <request-map uri="updateOrderItems">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="opentaps.updateOrderItems"/>
+        <response name="success" type="request-redirect" value="orderview">
+          <redirect-parameter name="orderId"/>
+        </response>
+        <response name="error" type="view" value="editorderitems"/>
+    </request-map>
     <request-map uri="editProductDeliveryDate">
         <security https="true" auth="true"/>
         <response name="success" type="view" value="editProductDeliveryDate"/>
