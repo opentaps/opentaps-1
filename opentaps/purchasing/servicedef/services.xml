@@ -132,6 +132,8 @@
             location="org.opentaps.common.order.OrderServices" invoke="updatePurchaseOrderItems">
         <description>Update the quantities/prices for an existing purchase order</description>
         <attribute name="orderId" type="String" mode="INOUT" optional="false"/>
+        <attribute name="forceComplete" type="String" mode="IN" optional="true"/>
+        <attribute name="recalcAdjustments" type="String" mode="IN" optional="true"/>
         <attribute name="itemDescriptionMap" type="Map" mode="IN" string-map-prefix="idm_" optional="true"/>
         <attribute name="itemQtyMap" type="Map" mode="IN" string-map-prefix="iqm_" optional="false"/>
         <attribute name="itemPriceMap" type="Map" mode="IN" string-map-prefix="ipm_" optional="false"/>
