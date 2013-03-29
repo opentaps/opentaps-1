@@ -21,12 +21,12 @@
     <!-- after creating a party, find communication events matching the email address and assign them to this party -->
     <eca service="createPartyEmailAddress" event="commit">
         <condition field-name="emailAddress" operator="is-not-empty"/>
-        <action service="crmsfa.updateActivityEmailsAssocs" mode="sync"/>
+        <action service="crmsfa.updateActivityEmailsAssocs" mode="async"/>
     </eca>
     <!-- after updating a contact, find communication events matching the email address and assign them to this party -->
     <eca service="updatePartyEmailAddress" event="commit">
         <condition field-name="emailAddress" operator="is-not-empty"/>
-        <action service="crmsfa.updateActivityEmailsAssocs" mode="sync"/>
+        <action service="crmsfa.updateActivityEmailsAssocs" mode="async"/>
     </eca>
 
 </service-eca>
