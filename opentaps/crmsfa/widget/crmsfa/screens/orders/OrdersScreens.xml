@@ -132,6 +132,10 @@ under the License.
                 <script location="component://crmsfa/webapp/crmsfa/WEB-INF/actions/orders/view/viewOrder.bsh"/>
                 <script location="component://crmsfa/webapp/crmsfa/WEB-INF/actions/orders/view/orderviewwebsecure.bsh"/>
                 <script location="component://crmsfa/webapp/crmsfa/WEB-INF/actions/orders/getOrderAccountingTags.bsh"/>
+                <!-- Uncomment to use Crm2 application
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getWidgetConfiguration"/>
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getSalesOrderLink"/>
+                -->
                 <!-- parameters for reuse contentList.ftl widgets -->
                 <set field="donePage" value="orderview"/>                
             </actions>

@@ -210,6 +210,10 @@
                 <script location="component://crmsfa/webapp/crmsfa/WEB-INF/actions/includes/getCatalogRequests.bsh"/>
                 <script location="component://opentaps-common/webapp/common/WEB-INF/actions/includes/getMergeFormsForCurrentUser.bsh"/>
                 <script location="component://crmsfa/webapp/crmsfa/WEB-INF/actions/contacts/customContactFields.bsh"/>
+                <!-- Uncomment to use Crm2 application
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getWidgetConfiguration"/>
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getContactLink"/>
+                -->
                 <!-- parameters for re-usable widgets -->
                 <set field="editContactMechPage" value="contactsEditContactMech"/>
                 <set field="donePage" value="viewContact"/>
@@ -294,6 +298,12 @@
                             <platform-specific><html><html-template location="component://crmsfa/webapp/crmsfa/contacts/submenus/contactNotesMenu.ftl"/></html></platform-specific>
                             <platform-specific><html><html-template location="component://crmsfa/webapp/crmsfa/common/ListNotes.ftl"/></html></platform-specific>
                         </container>
+
+                        <!-- Uncomment to use Crm2 application
+                        <container style="subSectionBlock">
+                          <platform-specific><html><html-template location="component://crm2/webapp/crm2/activities/activitiesWidget.ftl"/></html></platform-specific>
+                        </container>
+                        -->
                     </decorator-section>
                 </decorator-screen>
             </widgets>

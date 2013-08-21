@@ -49,6 +49,9 @@ The whole idea is to keep things simple and not use the screen widget where unne
     <#include "orderview/orderitems.ftl"/>
     <#include "orderview/ordernotes.ftl"/>
     <#include "orderview/transitions.ftl"/>
+    <!-- Uncomment to use Crm2 application
+    <@include location="component://crm2/webapp/crm2/activities/activitiesWidget.ftl"/>
+    -->
   </#if>
 <#else>
   <p class="tableheadtext">${uiLabelMap.CrmOrderNotFound}</p>

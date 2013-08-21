@@ -236,7 +236,13 @@
         <response name="success" type="none"/>
         <response name="error" type="none"/>
     </request-map>
-
+    <!-- Uncomment to use Crm2 application
+    <request-map uri="exportContactToCrm2">
+        <event type="json" invoke="crm2.exportContactToCrm2"/>
+        <response name="success" type="none"/>
+        <response name="error" type="none"/>
+    </request-map>
+    -->
     <view-map name="javascriptUiLabels.js" type="screen" page="component://opentaps-common/widget/screens/common/CommonScreens.xml#javascriptUiLabels.js" content-type="text/javascript"/>
     <view-map name="showChart" type="chart"/>
     <view-map name="setupReport" type="screen" page="component://opentaps-common/widget/screens/reports/ReportScreens.xml#setupReport"/>

@@ -65,6 +65,10 @@
                 <java location="org.opentaps.purchasing.supplier.SupplierActions" invoke="viewSupplier"/>
                 <script location="component://purchasing/webapp/purchasing/WEB-INF/actions/supplier/purchasingAgreementPermissions.bsh"/>
                 <script location="component://opentaps-common/webapp/common/WEB-INF/actions/contactmech/viewprofile.bsh"/>
+                <!-- Uncomment to use Crm2 application
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getWidgetConfiguration"/>
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getSupplierLink"/>
+                -->
             </actions>
             <widgets>
                 <decorator-screen name="main-section-decorator">
@@ -107,6 +111,11 @@
                             <platform-specific><html><html-template location="component://purchasing/webapp/purchasing/supplier/submenus/viewSupplierNotes.ftl"/></html></platform-specific>
                             <include-form name="listNotes" location="component://opentaps-common/widget/forms/common/CommonForms.xml"/>
                         </container>
+                        <!-- Uncomment to use Crm2 application
+                        <platform-specific>
+                            <html><html-template location="component://crm2/webapp/crm2/activities/activitiesWidget.ftl"/></html>
+                        </platform-specific>
+                        -->
                     </decorator-section>
                 </decorator-screen>
             </widgets>

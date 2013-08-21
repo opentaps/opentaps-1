@@ -221,11 +221,14 @@
                 <script location="component://crmsfa/webapp/crmsfa/WEB-INF/actions/includes/getCatalogRequests.bsh"/>
                 <script location="component://opentaps-common/webapp/common/WEB-INF/actions/includes/getMergeFormsForCurrentUser.bsh" />
                 <script location="component://crmsfa/webapp/crmsfa/WEB-INF/actions/accounts/customAccountFields.bsh"/>
+                <!-- Uncomment to use Crm2 application
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getWidgetConfiguration"/>
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getContactLink"/>
+                -->
             </actions>
             <widgets>
                 <decorator-screen name="main-section-decorator">
                     <decorator-section name="section-body">
-
                         <!-- Main accounts section -->
                         <platform-specific>
                             <html><html-template location="component://crmsfa/webapp/crmsfa/accounts/viewAccountDetail.ftl"/></html>
@@ -316,6 +319,11 @@
                                 </widgets>
                             </section>
                         </container>
+                        <!-- Uncomment to use Crm2 application
+                        <container style="subSectionBlock">
+                            <platform-specific><html><html-template location="component://crm2/webapp/crm2/activities/activitiesWidget.ftl"/></html></platform-specific>
+                        </container>
+                        -->
                     </decorator-section>
                 </decorator-screen>
             </widgets>
