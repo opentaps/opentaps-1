@@ -150,6 +150,10 @@
                 <set field="invoiceId" from-field="parameters.invoiceId"/>
                 <set field="gwtScripts[]" value="financialsgwt/org.opentaps.gwt.financials.invoices.invoices" global="true"/>
                 <java location="com.opensourcestrategies.financials.invoice.InvoiceActions" invoke="viewInvoice"/>
+                <!-- Uncomment to use Crm2 application
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getWidgetConfiguration"/>
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getInvoiceLink"/>
+                -->
             </actions>
             <widgets>
                 <decorator-screen name="main-section-decorator" location="${decoratorLocation}">
@@ -157,6 +161,11 @@
                         <platform-specific><html>
                             <html-template location="component://financials/webapp/financials/invoices/viewInvoice.ftl"/>
                         </html></platform-specific>
+                        <!-- Uncomment to use Crm2 application
+                        <container style="subSectionBlock">
+                          <platform-specific><html><html-template location="component://crm2/webapp/crm2/activities/activitiesWidget.ftl"/></html></platform-specific>
+                        </container>
+                        -->
                     </decorator-section>
                 </decorator-screen>
             </widgets>

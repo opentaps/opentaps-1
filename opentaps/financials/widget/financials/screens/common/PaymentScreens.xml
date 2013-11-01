@@ -81,6 +81,10 @@
                 <script location="component://financials/webapp/financials/WEB-INF/actions/includes/viewPayment.bsh"/>
                 <set field="headerItem" from-field="parameters.headerItem"/>
                 <set field="partyId" from-field="parameters.headerItem"/>
+                <!-- Uncomment to use Crm2 application
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getWidgetConfiguration"/>
+                <java location="com.opentaps.crm2.ActivitiesWidgetActions" invoke="getPaymentLink"/>
+                -->
             </actions>
             <widgets>
                 <decorator-screen name="main-section-decorator" location="${decoratorLocation}">
@@ -88,6 +92,11 @@
                         <platform-specific><html>
                             <html-template location="component://financials/webapp/financials/includes/viewPayment.ftl"/></html>
                         </platform-specific>
+                        <!-- Uncomment to use Crm2 application
+                        <container style="subSectionBlock">
+                          <platform-specific><html><html-template location="component://crm2/webapp/crm2/activities/activitiesWidget.ftl"/></html></platform-specific>
+                        </container>
+                        -->
                     </decorator-section>
                 </decorator-screen>
             </widgets>
