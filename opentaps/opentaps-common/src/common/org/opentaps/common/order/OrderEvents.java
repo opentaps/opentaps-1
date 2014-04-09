@@ -1438,6 +1438,7 @@ public final class OrderEvents {
 
         // retrieve contact mech info and pass it to JR
         List<Map<String, Object>> orderContactMechList = FastList.newInstance();
+        Map<String, Object> shippingPhoneLine = FastMap.newInstance();
         for (OrderContactMech orderContactMech : order.getOrderContactMeches()) {
             // ignore if the address is set to _NA_
             if ("_NA_".equals(orderContactMech.getContactMechId())) {
@@ -1447,12 +1448,31 @@ public final class OrderEvents {
             Map<String, Object> contactMechLine = FastMap.newInstance();
             ContactMech contactMech = orderContactMech.getContactMech();
             if (contactMech.getContactMechTypeId().equals("POSTAL_ADDRESS") && contactMech.getPostalAddress() != null) {
+                contactMechLine.put("contactMechTypeId", contactMech.getContactMechTypeId());
                 String contactMechPurposeType = orderContactMech.getContactMechPurposeType().getDescription();
                 contactMechLine.putAll(contactMech.getPostalAddress().toMap());
                 if (orderContactMech.getContactMechPurposeType() != null) {
                     contactMechLine.put("contactMechPurposeType", contactMechPurposeType);
                 }
                 orderContactMechList.add(contactMechLine);
+            }
+            if (order.isPurchaseOrder() && "PHONE_SHIPPING".equalsIgnoreCase(orderContactMech.getContactMechPurposeTypeId())) {
+                shippingPhoneLine = FastMap.newInstance();
+                String contactMechPurposeType = orderContactMech.getContactMechPurposeType().getDescription();
+                shippingPhoneLine.putAll(contactMech.getTelecomNumber().toMap());
+                if (orderContactMech.getContactMechPurposeType() != null) {
+                    shippingPhoneLine.put("contactMechPurposeType", contactMechPurposeType);
+                }
+            }
+        }
+        if (UtilValidate.isNotEmpty(shippingPhoneLine) && UtilValidate.isNotEmpty(orderContactMechList)) {
+            for (Map<String, Object> orderContactMech : orderContactMechList) {
+                String contactMechTypeId = (String) orderContactMech.get("contactMechTypeId");
+                if ("POSTAL_ADDRESS".equalsIgnoreCase(contactMechTypeId)) {
+                    orderContactMech.put("countryCode", shippingPhoneLine.get("countryCode"));
+                    orderContactMech.put("areaCode", shippingPhoneLine.get("areaCode"));
+                    orderContactMech.put("contactNumber", shippingPhoneLine.get("contactNumber"));
+                }
             }
         }
         if (UtilValidate.isNotEmpty(orderContactMechList)) {
